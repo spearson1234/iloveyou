@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Message</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #secretButton {
+      padding: 20px 40px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      transition-duration: 0.4s;
+    }
+
+    #secretButton:hover {
+      background-color: white;
+      color: black;
+    }
+
+    #secretPopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border: 2px solid #333;
+      z-index: 1;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+<button id="secretButton" onclick="showPopup()">Secret</button>
+
+<div id="secretPopup">
+  <p>Please enter the secret password:</p>
+  <input type="password" id="passwordInput">
+  <br><br>
+  <button onclick="checkPassword()">Submit</button>
+</div>
+
+<div id="overlay"></div>
+
+<script>
+  function showPopup() {
+    document.getElementById("secretPopup").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function checkPassword() {
+    var password = document.getElementById("passwordInput").value.toLowerCase();
+    if (password === "iloveyou") {
+      window.location.href = "lovePoem.html"; // Redirect to the next page
+    } else {
+      alert("Incorrect password. Please try again.");
+    }
+  }
+
+  function hidePopup() {
+    document.getElementById("secretPopup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
